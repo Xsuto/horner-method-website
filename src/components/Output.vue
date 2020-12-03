@@ -1,9 +1,9 @@
 <template>
-  <h1 v-html="templateOutput" v-show="!isNaN(output)"></h1>
+  <h1 v-show="!isNaN(output)" v-html="templateOutput" />
 </template>
 
 <script lang="ts">
-import { defineComponent, watchEffect, ref, computed, toRefs } from 'vue';
+import { defineComponent, watchEffect, ref, toRefs } from 'vue';
 import formatOutput from '../lib/formatOutput';
 import horner from '../lib/horner';
 

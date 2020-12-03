@@ -2,7 +2,7 @@
   <label>Liczba przy X do potęgi {{ wsp.st }}</label>
   <input
     :value="wsp.value"
-    @input="(e) => handleInput(e.target.value, index)"
+    @input="(e) => handleInput(e.target.value)"
   />
 </template>
 
@@ -10,16 +10,24 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
-    wsp: Object,
-    index: Number,
+    wsp: {
+      type: Object,
+      required: true,
+    },
+    index: {
+      type: Number,
+      required: true,
+    },
   },
+  emits: ['input'],
   setup(_, { emit }) {
-    const handleInput = (value, i) => {
-      emit('input', { value, i });
+    const handleInput = (value) => {
+      emit('input', value);
     };
     return {
       handleInput,
     };
   },
+
 });
 </script>

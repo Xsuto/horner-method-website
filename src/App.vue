@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Output utput :st="st" :divider="divider" :wspList="wspList" />
+    <Output utput :st="st" :divider="divider" :wsp-list="wspList" />
     <label>Wspołczynik</label>
     <input v-model="st" />
     <label>X do podzielenia</label>
@@ -10,7 +10,7 @@
       :key="i"
       :wsp="wsp"
       :index="i"
-      @input="({ value, i }) => handleInput({ value, i })"
+      @input="(value) => handleInput({ value, i })"
     />
   </div>
 </template>
