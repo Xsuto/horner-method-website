@@ -38,11 +38,7 @@ export default defineComponent({
     
     const handleInput = ({value,i}) => {
       if(isNaN(value) || value === "") return
-      wspList.value = wspList.value.map((ele,idx) => {
-        if(idx == i) return {...ele,value: parseFloat(value)}
-        return ele
-      })
-      
+      wspList.value[i] = {...wspList.value[i],value: parseFloat(value)}
     }
 
     return {
