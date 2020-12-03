@@ -5,7 +5,7 @@
     <input v-model="st">
     <label>X do podzielenia</label>
     <input v-model="divider">
-     <wsp-item v-for="(wsp,i) in wspList" :key="i" :wsp="wsp" :index="i" @input="({value,i}) => handleInput({value,i})"/>
+    <WspItem v-for="(wsp,i) in wspList" :key="i" :wsp="wsp" :index="i" @input="({value,i}) => handleInput({value,i})"/>
   </div>
 
 </template>
@@ -44,7 +44,6 @@ export default defineComponent({
       })
       
     }
-    
 
     return {
       st,
