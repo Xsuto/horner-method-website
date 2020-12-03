@@ -14,8 +14,6 @@
 import { defineComponent,ref,computed,watchEffect } from "vue";
 import WspItem from "./components/wspItem.vue";
 import Output from "./components/Output.vue"
-import horner from './lib/horner'
-import formatOutput from './lib/formatOutput'
 
 export default defineComponent({
   components: { WspItem,Output },

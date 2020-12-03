@@ -23,24 +23,24 @@ export default defineComponent({
         }
     },
     setup(props){
-    const {st,divider,wspList} = toRefs(props)
-    const output = ref(NaN)
-    const outputList = ref([])
-    const templateOutput = ref("")
-    watchEffect(() => {
-      output.value = NaN
-      if(divider.value === "" || divider.value === "0" || st.value <= 0 || isNaN(st.value)) return
-      output.value = horner({wspList,outputList,st,divider})
-      const numbers = wspList.value.map((ele,i) => formatOutput(wspList,ele,i)).join('')
-      const div = Number(divider.value) >= 0 ? `(x - ${Math.abs(Number(divider.value))})` : `(x + ${Math.abs(Number(divider.value))})`
-      const o = outputList.value.map((ele,i) => formatOutput(outputList,ele,i)).join("")
-      const rest = output.value >= 0 ? `+ ${output.value}` : `- ${-output.value}`
-      templateOutput.value =  `Wynik (${numbers}) / ${div} = (${o}) * ${div} ${rest}`
-    })
-    return {
-        templateOutput,
-        output
-    }
+        const {st,divider,wspList} = toRefs(props)
+        const output = ref(NaN)
+        const outputList = ref([])
+        const templateOutput = ref("")
+        watchEffect(() => {
+        output.value = NaN
+        if(divider.value === "" || divider.value === "0" || st.value <= 0 || isNaN(st.value)) return
+        output.value = horner({wspList,outputList,st,divider})
+        const numbers = wspList.value.map((ele,i) => formatOutput(wspList,ele,i)).join('')
+        const div = Number(divider.value) >= 0 ? `(x - ${Math.abs(Number(divider.value))})` : `(x + ${Math.abs(Number(divider.value))})`
+        const o = outputList.value.map((ele,i) => formatOutput(outputList,ele,i)).join("")
+        const rest = output.value >= 0 ? `+ ${output.value}` : `- ${-output.value}`
+        templateOutput.value =  `Wynik (${numbers}) / ${div} = (${o}) * ${div} ${rest}`
+        })
+        return {
+            templateOutput,
+            output
+        }
     }
 })
 </script>
