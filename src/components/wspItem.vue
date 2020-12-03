@@ -1,6 +1,6 @@
 <template>
     <label>Liczba przy X do potęgi {{wsp.st}}</label>
-    <input :value="val" @input="(e) => handelChange(e.target.value, index)"/>
+    <input :value="wsp.value" @input="(e) => handleInput(e.target.value, index)"/>
 </template>
 
 <script lang="ts">
@@ -10,14 +10,12 @@ export default defineComponent({
         wsp: Object,
         index: Number
     },
-    computed: {
-        val(){
-            return this.wsp.value
+    setup(_, {emit}){
+        const handleInput = (value,i) => {
+            emit("input",{value,i})
         }
-    },
-    methods: {
-        handelChange(value,i){
-            this.$emit("input",{value,i})
+        return {
+            handleInput
         }
     }
 })
